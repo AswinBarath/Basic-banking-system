@@ -1,0 +1,14 @@
+.Nav {
+    padding: 0%;
+}
+
+.Logo {
+    width: auto;
+    height: 75px;
+    padding: 0%;
+}
+
+.Text {
+    font-size: 125%;
+    text-transform: uppercase;
+}
