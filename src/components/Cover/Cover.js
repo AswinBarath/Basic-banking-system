@@ -6,6 +6,7 @@ const Cover = () => {
             <img
                 src={cover}
                 className="cover"
+                alt="TSF Bank cover image"
             />
         </div>
     );

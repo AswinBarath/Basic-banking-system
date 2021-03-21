@@ -1,12 +1,12 @@
 import { Button } from 'react-bootstrap';
 import './ViewButton.css'
-const ViewButton = ({onButtonSubmit}) => {
+const ViewButton = ({ onRouteChange }) => {
     return (
         <div className="button">
             <Button 
             variant="success" 
             size="lg" 
-            onClick={onButtonSubmit}
+            onClick={ () => onRouteChange('customers')}
             >
                 View all Customers
                 </Button>

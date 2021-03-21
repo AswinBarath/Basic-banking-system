@@ -7,12 +7,24 @@ import Cover from './components/Cover/Cover';
 import './App.css';
 // import { Button } from 'bootstrap';
 
+const customers = [
+  {
+    name: 'aswin',
+    email: 'aswin@gmail.com',
+    balance: 10
+  },
+  {
+    name: 'sriram',
+    email: 'sriram@gmail.com',
+    balance: 100
+  }
+];
+
 const initialState = {
   route: 'home',
   isViewCustomers: false,
-  showDetails: false,
+  showDetails: 'hide',
   customers: {
-    id: '',
     name: '',
     email: '',
     balance: 0
@@ -26,9 +38,8 @@ class App extends Component {
     this.state = {
       route: 'home',
       isViewCustomers: false,
-      showDetails: false,
+      showDetails: 'hide',
       customers: {
-        id: '',
         name: '',
         email: '',
         balance: 0
@@ -36,28 +47,41 @@ class App extends Component {
     }
   }
 
-  onButtonSubmit = () => {
-    this.setState({route: 'customers', isViewCustomers: true})
+  // onButtonSubmit = () => {
+  //   this.setState({ isViewCustomers: true })
+  // }
+
+  onSelectCustomer = (value) => {
+    if (value === 'show') {
+      this.setState({ showDetails: 'show' })
+    } else {
+      this.setState({ showDetails: 'hide' })
+    }
   }
 
-  onSelectCustomer = () => {
-    this.setState({showDetails: true})
+  onRouteChange = (route) => {
+    if (route === 'home') {
+      this.setState({initialState})
+    } else if (route === 'customers') {
+      this.setState({isViewCustomers: true})
+    }
+    this.setState({route: route})
   }
 
   render() {
     const { route, isViewCustomers, showDetails } = this.state
     return (
       <div>
-        <Navigation />
+        <Navigation onRouteChange={this.onRouteChange} />
         <Cover />
         { route === 'home'
           ?
           <div>
-            <ViewButton onButtonSubmit={this.onButtonSubmit}/>
+            <ViewButton onRouteChange={this.onRouteChange} />
           </div>
-          : 
+          :
           <div>
-            <Customers onSelectCustomer={this.onSelectCustomer} showDetails={showDetails} />
+            <Customers customers={customers} onSelectCustomer={this.onSelectCustomer} showDetails={showDetails} />
           </div>
         }
       </div>

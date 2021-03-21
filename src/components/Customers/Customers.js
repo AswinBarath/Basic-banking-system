@@ -1,15 +1,16 @@
 import Cards from './Cards/Cards';
-const Customers = ({ customers, onSelectCustomer }) => {
+const Customers = ({ customers, onSelectCustomer, showDetails }) => {
     return (
         <div>
             {
                 customers.map((customer, i) => {
                     return (
                         <Cards
-                            id={customers[i].id}
-                            name={customers[i].name}
-                            email={customers[i].email}
-                            balance={customers[i].balance}
+                            name={customer.name}
+                            email={customer.email}
+                            balance={customer.balance}
+                            onSelectCustomer={onSelectCustomer}
+                            showDetails={showDetails}
                         />
                     );
                 })

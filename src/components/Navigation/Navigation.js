@@ -1,7 +1,7 @@
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import logo from './logo.png';
 import './logo.css'
-const Navigation = () => {
+const Navigation = ({onRouteChange}) => {
     return (
         <Navbar className="Nav sticky-top" bg="dark" variant="dark" expand="lg">
             <Navbar.Brand href="#home">
@@ -16,10 +16,10 @@ const Navigation = () => {
                 <Container>
                     <Nav className="Text mr-auto">
                         <Row>
-                            <Col><Nav.Link href="#home">Home</Nav.Link></Col>
-                            <Col><Nav.Link href="#link">Customers</Nav.Link></Col>
-                            <Col><Nav.Link href="#link">Transactions</Nav.Link></Col>
-                            <Col><Nav.Link href="#link">About</Nav.Link></Col>
+                            <Col><Nav.Link onClick={() => onRouteChange('home')}>Home</Nav.Link></Col>
+                            <Col><Nav.Link onClick={() => onRouteChange('customers')}>Customers</Nav.Link></Col>
+                            <Col><Nav.Link onClick={() => onRouteChange('transactions')}>Transactions</Nav.Link></Col>
+                            <Col><Nav.Link onClick={() => onRouteChange('about')}>About</Nav.Link></Col>
                         </Row>
                     </Nav>
                 </Container>
